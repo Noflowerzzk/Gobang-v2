@@ -14,6 +14,8 @@ namespace 五子棋_v2
 {
     public partial class Form1 : Form
     {
+        const double cell = 25;
+
         private Kinds.Kind nowKind;
 
         public Form1()
@@ -41,17 +43,43 @@ namespace 五子棋_v2
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
+            if (e.X < 8 || e.X > 492 || e.Y > 492 || e.Y < 8)
+                return;
+
+            int i = 0, j = 0;
+
+            if ((e.X - 25) % 25 < 9)
+                j = (e.X - 25) / 25;
+            if ((e.X - 25) % 25 > 16)
+                j = (e.X - 25) / 25 + 1;
+
+            if ((e.Y - 25) % 25 < 9)
+                i = (e.Y - 25) / 25;
+            if ((e.Y - 25) % 25 > 16)
+                i = (e.Y - 25) / 25 + 1;
+
+
+            label2.Text = $"j = {j}, i = {i}";
+
             PictureBox chess = new PictureBox();
 
-            if (nowKind == Kinds.Kind.black)
-                chess.BackgroundImage = Properties.Resources.black;
-            else
-                chess.BackgroundImage = Properties.Resources.white;
-
             chess.SizeMode = PictureBoxSizeMode.Zoom;
-            chess.Location = new Point(e.X - 13, e.Y - 13);
-            chess.Width = 26;
-            chess.Height = 26;
+            chess.BackColor = Color.Transparent;
+            chess.Location = new Point((int)(25 + 25 * j - 9), (int)(25 + 25 * i - 9));
+            chess.Width = 18;
+            chess.Height = 18;
+            // chess.
+
+            if (nowKind == Kinds.Kind.black)
+            {
+                chess.Image = Properties.Resources.black;
+            }
+            else
+            {
+                chess.Image = Properties.Resources.white;
+            }
+            pictureBox1.Controls.Add(chess);
+            // if()
         }
     }
 }
