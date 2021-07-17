@@ -54,6 +54,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Kinds.cs" />
+    <Compile Include="neuron.cs" />
+    <Compile Include="neuronNetwork.cs" />
+    <Compile Include="neuronTanh.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
