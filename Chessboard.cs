@@ -155,10 +155,51 @@ namespace 五子棋_v2
 			number = 0;
 		}
 
-		public void MachineLearning()
+		public Point MachineLearning()
 		{
-			// 创建群落
+			Random r = new Random();
+			double[][] l1w = new double[8][];
+			double[] l1b = new double[8];
 
+			for (int i = 0; i < 8; i++)
+			{
+				l1w[i] = new double[361];
+
+				for (int j = 0; j < 361; j++)
+					l1w[i][j] = r.NextDouble() * 2 - 1;
+				l1b[i] = r.NextDouble() * 2 - 1;
+			}
+
+			double[][] l2w = new double[8][];
+			double[] l2b = new double[8];
+
+			for (int i = 0; i < 8; i++)
+			{
+				l2w[i] = new double[8];
+
+				for (int j = 0; j < 8; j++)
+					l2w[i][j] = r.NextDouble() * 2 - 1;
+				l2b[i] = r.NextDouble() * 2 - 1;
+			}
+
+			double[][] l3w = new double[2][];
+			double[] l3b = new double[2];
+
+			for (int i = 0; i < 2; i++)
+			{
+				l3w[i] = new double[8];
+
+				for (int j = 0; j < 8; j++)
+					l3w[i][j] = r.NextDouble() * 2 - 1;
+				l3b[i] = r.NextDouble() * 2 - 1;
+			}
+
+
+
+			// 创建群落
+			neuronNetwork n1 = new neuronNetwork(l1w, l1b, l2w, l2b, l3w, l3b);
+
+			return n1.response(boardLine);
 		}
 	}
 }

@@ -50,7 +50,7 @@ namespace 五子棋_v2
 			for (i = 0; i < 8; i++)
 				neuronsL2[i] = new neuron(L2weight[i], L2bias[i]);
 			for (i = 0; i < 2; i++)
-				neuronsOutput[i] = new neuron(Outputweight[i], Outputbias[i]);
+				neuronsOutput[i] = new neuronTanh(Outputweight[i], Outputbias[i]);
 		}
 
 		/// <summary>
@@ -79,8 +79,9 @@ namespace 五子棋_v2
 				Out2[i] = neuronsL2[i].output(Out1);
 
 			// 第三层输出
-			return new Point(Convert.ToInt32(19 * (0.5 * neuronsOutput[1].output(Out2) + 0.5)),
-				Convert.ToInt32(19 * (0.5 * neuronsOutput[2].output(Out2) + 0.5)));
+			return new Point(Convert.ToInt32(Math.Floor(19 * (0.5 * neuronsOutput[0].output(Out2) + 0.5))),
+				Convert.ToInt32(Math.Floor(19 * (0.5 * neuronsOutput[1].output(Out2) + 0.5))));
+			
 		}
 	}
 }

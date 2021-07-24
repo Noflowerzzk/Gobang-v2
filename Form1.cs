@@ -189,7 +189,9 @@ namespace 五子棋_v2
 				Console.WriteLine();
 			}
 
-			int a[3]
+			Point point = Chessboard.MachineLearning();
+
+			label1.Text = $"x = {point.X}, y = {point.Y}";
 		}
 	}
 }

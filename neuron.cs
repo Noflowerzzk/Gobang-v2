@@ -29,6 +29,8 @@ namespace 五子棋_v2
 		/// <param name="num">input数量</param>
 		public neuron(double[] w, double b)
 		{
+			weight = new double[w.Length];
+
 			for (int i = 0; i < w.Length; i++)
 				weight[i] = w[i];
 
