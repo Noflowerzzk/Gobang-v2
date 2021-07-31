@@ -25,6 +25,8 @@ namespace 五子棋_v2
 		/// </summary>
 		private bool ifStart = false;
 
+		int p = 0;
+
 		/// <summary>
 		/// default constructor
 		/// </summary>
@@ -60,8 +62,8 @@ namespace 五子棋_v2
 		/// <param name="e"></param>
 		private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
 		{
-			label1.Text = "a";
-			label1.Text = $"x = {e.X}, y = {e.Y}";
+			// label1.Text = "a";
+			// label1.Text = $"x = {e.X}, y = {e.Y}";
 		}
 
 		/// <summary>
@@ -190,8 +192,11 @@ namespace 五子棋_v2
 			}
 
 			Point point = Chessboard.MachineLearning();
+			makeAChess(point.X, point.Y);
 
 			label1.Text = $"x = {point.X}, y = {point.Y}";
+			p++;
+			label2.Text = $"done{p}";
 		}
 	}
 }
